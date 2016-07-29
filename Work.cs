@@ -1,7 +1,7 @@
 using System.Linq;
-using AppKiller.Workflow.Types;
+using AppKill.Workflow.Types;
 
-namespace AppKiller
+namespace AppKill
 {
     internal static class Work
     {

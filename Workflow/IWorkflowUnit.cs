@@ -1,4 +1,4 @@
-namespace AppKiller.Workflow
+namespace AppKill.Workflow
 {
     internal interface IWorkflowUnit
     {

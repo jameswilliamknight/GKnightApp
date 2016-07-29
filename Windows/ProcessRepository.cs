@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using AppKiller.Workflow.Types;
+using AppKill.Workflow.Types;
 
-namespace AppKiller.Windows
+namespace AppKill.Windows
 {
     internal static class ProcessRepository
     {

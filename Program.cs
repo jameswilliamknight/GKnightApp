@@ -1,9 +1,9 @@
 ﻿using System;
-using AppKiller.Extensions;
-using AppKiller.Workflow;
-using AppKiller.Workflow.Types;
+using AppKill.Extensions;
+using AppKill.Workflow;
+using AppKill.Workflow.Types;
 
-namespace AppKiller
+namespace AppKill
 {
     public class Program
     {

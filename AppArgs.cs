@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Fclp;
 
-namespace AppKiller
+namespace AppKill
 {
     internal class AppArgs
     {

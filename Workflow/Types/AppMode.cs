@@ -1,6 +1,6 @@
 using System;
 
-namespace AppKiller.Workflow.Types
+namespace AppKill.Workflow.Types
 {
     [Flags]
     internal enum AppMode

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Linq;
 
-namespace AppKiller.Windows
+namespace AppKill.Windows
 {
     public static class ProcessFilters
     {

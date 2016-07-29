@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AppKiller.Workflow
+namespace AppKill.Workflow
 {
     /// <summary>
     ///     http://www.schweikhardt.net/man_page_howto.html

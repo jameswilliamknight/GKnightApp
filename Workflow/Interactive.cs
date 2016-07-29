@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using AppKiller.Windows;
-using AppKiller.Workflow.Types;
+using AppKill.Windows;
+using AppKill.Workflow.Types;
 
-namespace AppKiller.Workflow
+namespace AppKill.Workflow
 {
     internal class Interactive : IWorkflowUnit
     {

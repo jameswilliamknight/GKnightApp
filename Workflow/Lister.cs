@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using AppKiller.Windows;
+using AppKill.Windows;
 
-namespace AppKiller.Workflow
+namespace AppKill.Workflow
 {
     internal class Lister : IWorkflowUnit
     {

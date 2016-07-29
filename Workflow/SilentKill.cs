@@ -1,9 +1,8 @@
 using System;
-using System.Linq;
-using AppKiller.Windows;
-using AppKiller.Workflow.Types;
+using AppKill.Windows;
+using AppKill.Workflow.Types;
 
-namespace AppKiller.Workflow
+namespace AppKill.Workflow
 {
     internal class SilentKill : IWorkflowUnit
     {

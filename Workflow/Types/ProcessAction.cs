@@ -1,4 +1,4 @@
-namespace AppKiller.Workflow.Types
+namespace AppKill.Workflow.Types
 {
     internal enum ProcessAction
     {

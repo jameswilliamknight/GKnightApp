@@ -7,8 +7,8 @@
     <ProjectGuid>{8447FB82-AF0E-4DBF-8864-D33DC129F378}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AppKiller</RootNamespace>
-    <AssemblyName>AppKiller</AssemblyName>
+    <RootNamespace>AppKill</RootNamespace>
+    <AssemblyName>AppKill</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
