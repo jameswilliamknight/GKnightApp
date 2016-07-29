@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Fclp;
 
 namespace AppKiller
@@ -11,7 +13,9 @@ namespace AppKiller
 
         public bool ListProcesses { get; set; }
 
-        public string[] KillList { get; set; }
+        public List<string> KillList { get; set; }
+
+        public bool Verbose { get; set; }
 
 
         // -------------------------------------------------------------------------------------------------------------
@@ -33,14 +37,31 @@ namespace AppKiller
                 .Setup(arg => arg.KillList)
                 .As('k', "kill")
                 .Callback(result => appArgs.KillList = result)
-                .SetDefault(new string[0]);
+                .SetDefault(new List<string>());
 
             fclp.Setup(arg => arg.ListProcesses)
                 .As('l', "list")
                 .Callback(result => appArgs.ListProcesses = result)
                 .SetDefault(false);
 
+            fclp.Setup(arg => arg.Verbose)
+                .As('v', "verbose")
+                .Callback(result => appArgs.Verbose = result)
+                .SetDefault(false);
+
             fclp.Parse(args);
+
+            if (appArgs.Verbose)
+            {
+                Console.WriteLine($"Verbose = {appArgs.Verbose}");
+                Console.WriteLine($"Interactive Mode = {appArgs.InteractiveMode}");
+                Console.WriteLine($"ListProcesses = {appArgs.ListProcesses}");
+                if (appArgs.KillList.Any())
+                {
+                    Console.WriteLine("\"Kill List\": [ \"{0}\" ]", string.Join("\", \"", appArgs.KillList));
+                }
+            }
+
             return appArgs;
         }
     }

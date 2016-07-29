@@ -31,7 +31,7 @@ namespace AppKiller
                     break;
 
                 case AppMode.SilentKill:
-                    WorkflowUnit = new Silent();
+                    WorkflowUnit = new SilentKill();
                     break;
 
                 default:

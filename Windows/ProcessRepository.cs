@@ -32,7 +32,7 @@ namespace AppKiller.Windows
             return currentProcesses;
         }
 
-        public static void EndProcesses(IEnumerable<Process> toEndProcess, ProcessAction action)
+        public static IEnumerable<string> EndProcesses(IEnumerable<Process> toEndProcess, ProcessAction action)
         {
             foreach (var process in toEndProcess)
             {
@@ -42,11 +42,13 @@ namespace AppKiller.Windows
                         if (!process.HasExited)
                         {
                             process.Kill();
+                            yield return process.ProcessName;
                         }
                         break;
 
                     case ProcessAction.Close:
                         process.CloseMainWindow();
+                        yield return process.ProcessName;
                         break;
                 }
             }

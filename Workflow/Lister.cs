@@ -9,8 +9,11 @@ namespace AppKiller.Workflow
         {
             ProcessRepository.GetProcesses(true);
 
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
+            if (appArgs.InteractiveMode)
+            {
+                Console.WriteLine("Press any key to exit.");
+                Console.ReadKey();
+            }
 
             return 0;
         }

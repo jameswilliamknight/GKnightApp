@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentCommandLineParser, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
+      <HintPath>packages\FluentCommandLineParser.1.4.3\lib\net35\FluentCommandLineParser.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -58,7 +58,7 @@
     <Compile Include="Workflow\Interactive.cs" />
     <Compile Include="Workflow\IWorkflowUnit.cs" />
     <Compile Include="Workflow\Lister.cs" />
-    <Compile Include="Workflow\Silent.cs" />
+    <Compile Include="Workflow\SilentKill.cs" />
     <Compile Include="Workflow\Types\AppMode.cs" />
     <Compile Include="Workflow\Types\ProcessAction.cs" />
   </ItemGroup>
