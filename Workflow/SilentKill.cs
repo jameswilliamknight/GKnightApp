@@ -1,5 +1,5 @@
 using System;
-using AppKill.Windows;
+using AppKill.Core;
 using AppKill.Workflow.Types;
 
 namespace AppKill.Workflow

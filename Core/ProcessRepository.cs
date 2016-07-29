@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using AppKill.Workflow.Types;
 
-namespace AppKill.Windows
+namespace AppKill.Core
 {
     internal static class ProcessRepository
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using AppKill.Core;
 using AppKill.Util;
-using AppKill.Windows;
 
 namespace AppKill.Workflow
 {
