@@ -13,6 +13,11 @@ namespace AppKiller.Extensions
         {
             var mode = AppMode.None;
 
+            if (args.HelpMode)
+            {
+                return AppMode.Help;
+            }
+
             if (args.KillList.Any())
             {
                 mode |= AppMode.SilentKill;

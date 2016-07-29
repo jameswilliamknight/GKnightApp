@@ -17,6 +17,8 @@ namespace AppKiller
 
         public bool Verbose { get; set; }
 
+        public bool HelpMode { get; set; }
+
 
         // -------------------------------------------------------------------------------------------------------------
 
@@ -27,6 +29,11 @@ namespace AppKiller
         {
             var fclp = new FluentCommandLineParser<AppArgs>();
             var appArgs = new AppArgs();
+
+            fclp.Setup(arg => arg.HelpMode)
+                .As('h', "help")
+                .Callback(result => appArgs.HelpMode = result)
+                .SetDefault(false);
 
             fclp.Setup(arg => arg.InteractiveMode)
                 .As('i', "interactive")
@@ -48,7 +55,7 @@ namespace AppKiller
                 .As('v', "verbose")
                 .Callback(result => appArgs.Verbose = result)
                 .SetDefault(false);
-
+            
             fclp.Parse(args);
 
             if (appArgs.Verbose)

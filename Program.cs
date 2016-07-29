@@ -18,20 +18,25 @@ namespace AppKiller
 
         private static int Bootstrap(AppArgs appArgs)
         {
-            IWorkflowUnit WorkflowUnit;
+            IWorkflowUnit workflowUnit;
+
             switch (AppArgsExtension.GetMode(appArgs))
             {
+                case AppMode.Help:
+                    workflowUnit = new Help();
+                    break;
+
                 case AppMode.List:
                 case AppMode.List | AppMode.Interactive:
-                    WorkflowUnit = new Lister();
+                    workflowUnit = new Lister();
                     break;
 
                 case AppMode.Interactive:
-                    WorkflowUnit = new Interactive();
+                    workflowUnit = new Interactive();
                     break;
 
                 case AppMode.SilentKill:
-                    WorkflowUnit = new SilentKill();
+                    workflowUnit = new SilentKill();
                     break;
 
                 default:
@@ -39,7 +44,7 @@ namespace AppKiller
                     return 64;
             }
 
-            return WorkflowUnit.Run(appArgs);
+            return workflowUnit.Run(appArgs);
         }
     }
 }

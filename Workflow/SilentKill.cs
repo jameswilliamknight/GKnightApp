@@ -25,7 +25,6 @@ namespace AppKiller.Workflow
                 }
             }
             
-
             return 0;
         }
     }
