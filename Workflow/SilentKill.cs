@@ -4,6 +4,7 @@ using AppKill.Workflow.Types;
 
 namespace AppKill.Workflow
 {
+    /// <see cref="AppMode.SilentKill"/>
     internal class SilentKill : IWorkflowUnit
     {
         private readonly AppArgs _appArgs;

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using AppKill.Core;
 using AppKill.Util;
+using AppKill.Workflow.Types;
 
 namespace AppKill.Workflow
 {
+    /// <see cref="AppMode.List"/>
     internal class Lister : IWorkflowUnit
     {
         private readonly AppArgs _appArgs;

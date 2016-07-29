@@ -7,6 +7,7 @@ using AppKill.Workflow.Types;
 
 namespace AppKill.Workflow
 {
+    /// <see cref="AppMode.Interactive"/>
     internal class Interactive : IWorkflowUnit
     {
         private readonly AppArgs _appArgs;

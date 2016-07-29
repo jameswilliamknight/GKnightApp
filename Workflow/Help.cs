@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Reflection;
+using AppKill.Workflow.Types;
 
 namespace AppKill.Workflow
 {
     /// <summary>
     ///     http://www.schweikhardt.net/man_page_howto.html
     /// </summary>
+    /// <see cref="AppMode.Help"/>
     internal class Help : IWorkflowUnit
     {
         private readonly AppArgs _appArgs;
@@ -22,7 +25,7 @@ namespace AppKill.Workflow
                 Console.Clear();
             }
 
-            var appName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".exe";
+            var appName = Assembly.GetExecutingAssembly().GetName().Name + ".exe";
 
             Console.WriteLine(@"Interactive mode");
             Console.WriteLine(@"Displays an interactive menu");
