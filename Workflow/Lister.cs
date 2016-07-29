@@ -8,7 +8,14 @@ namespace AppKill.Workflow
 {
     internal class Lister : IWorkflowUnit
     {
-        public int Run(AppArgs appArgs)
+        private readonly AppArgs _appArgs;
+
+        public Lister(AppArgs appArgs)
+        {
+            _appArgs = appArgs;
+        }
+
+        public int Run()
         {
             var temp = new KeyValuePair<Process[], string>(
                 ProcessRepository.GetProcesses(true),
@@ -16,7 +23,7 @@ namespace AppKill.Workflow
 
             Log.Processes(temp);
 
-            if (appArgs.InteractiveMode)
+            if (_appArgs.InteractiveMode)
             {
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();

@@ -7,45 +7,41 @@ namespace AppKill
 {
     public class Program
     {
-        public bool Interactive { get; set; }
-
         static void Main(string[] args)
         {
-            Environment.Exit(
-                Bootstrap(
-                    AppArgs.Build(args)));
+            var appArgs = AppArgs.Build(args);
+
+            var exitCode = Bootstrap(appArgs)?.Run();
+
+            Environment.Exit(exitCode ?? 64); // http://stackoverflow.com/a/24121322
         }
 
-        private static int Bootstrap(AppArgs appArgs)
+        private static IWorkflowUnit Bootstrap(AppArgs appArgs)
         {
-            IWorkflowUnit workflowUnit;
+            IWorkflowUnit workflowUnit = null;
 
-            switch (AppArgsExtension.GetMode(appArgs))
+            switch (appArgs.Mode())
             {
                 case AppMode.Help:
-                    workflowUnit = new Help();
+                    workflowUnit = new Help(appArgs);
                     break;
 
                 case AppMode.List:
                 case AppMode.List | AppMode.Interactive:
-                    workflowUnit = new Lister();
+                    workflowUnit = new Lister(appArgs);
                     break;
 
                 case AppMode.Interactive | AppMode.SilentKill:
                 case AppMode.Interactive:
-                    workflowUnit = new Interactive();
+                    workflowUnit = new Interactive(appArgs);
                     break;
 
                 case AppMode.SilentKill:
-                    workflowUnit = new SilentKill();
+                    workflowUnit = new SilentKill(appArgs);
                     break;
-
-                default:
-                    // http://stackoverflow.com/a/24121322
-                    return 64;
             }
 
-            return workflowUnit.Run(appArgs);
+            return workflowUnit;
         }
     }
 }

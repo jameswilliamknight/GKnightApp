@@ -6,9 +6,16 @@ namespace AppKill.Workflow
 {
     internal class SilentKill : IWorkflowUnit
     {
-        public int Run(AppArgs appArgs)
+        private readonly AppArgs _appArgs;
+
+        public SilentKill(AppArgs appArgs)
         {
-            var killList = appArgs.KillList.ToArray();
+            _appArgs = appArgs;
+        }
+
+        public int Run()
+        {
+            var killList = _appArgs.KillList.ToArray();
 
             var processToEnd = ProcessRepository
                 .GetProcesses(false)
@@ -18,7 +25,7 @@ namespace AppKill.Workflow
 
             foreach (var processName in ProcessRepository.EndProcesses(processToEnd, ProcessAction.Exit))
             {
-                if (appArgs.Verbose)
+                if (_appArgs.Verbose)
                 {
                     Console.WriteLine($"Killed {processName}");
                 }

@@ -7,10 +7,17 @@ namespace AppKill.Workflow
     /// </summary>
     internal class Help : IWorkflowUnit
     {
-        // TODO: Output README.md to console with basic formatting
-        public int Run(AppArgs appArgs)
+        private readonly AppArgs _appArgs;
+
+        public Help(AppArgs appArgs)
         {
-            if (appArgs.InteractiveMode)
+            _appArgs = appArgs;
+        }
+
+        // TODO: Output README.md to console with basic formatting
+        public int Run()
+        {
+            if (_appArgs.InteractiveMode)
             {
                 Console.Clear();
             }
@@ -32,7 +39,7 @@ namespace AppKill.Workflow
             Console.WriteLine(@"flag: k, kill");
             Console.WriteLine($"> {appName} - k spotify chrome");
 
-            if (appArgs.InteractiveMode)
+            if (_appArgs.InteractiveMode)
             {
                 Console.ReadKey();
             }

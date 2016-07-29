@@ -8,7 +8,7 @@ namespace AppKill.Extensions
         /// <summary>
         ///     Factory <see cref="AppMode"/> method.
         /// </summary>
-        public static AppMode GetMode(this AppArgs args)
+        public static AppMode Mode(this AppArgs args)
         {
             var mode = AppMode.None;
 

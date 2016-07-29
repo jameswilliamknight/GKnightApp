@@ -9,6 +9,13 @@ namespace AppKill.Workflow
 {
     internal class Interactive : IWorkflowUnit
     {
+        private readonly AppArgs _appArgs;
+
+        public Interactive(AppArgs appArgs)
+        {
+            _appArgs = appArgs;
+        }
+
         /// <summary>
         ///     Displays all the available keys.
         /// </summary>
@@ -22,9 +29,9 @@ namespace AppKill.Workflow
             Console.WriteLine("K - Kill");
         }
 
-        public int Run(AppArgs appArgs)
+        public int Run()
         {
-            var killList = appArgs.KillList.ToArray();
+            var killList = _appArgs.KillList.ToArray();
 
             var _keyPressed = '\0';
 
