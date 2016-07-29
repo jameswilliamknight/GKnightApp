@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace AppKill.Workflow
+namespace AppKill.Util
 {
     internal static class Log
     {
@@ -15,7 +15,6 @@ namespace AppKill.Workflow
             var processNames = currentProcesses
                 .Select(p => p.ProcessName)
                 .ToList();
-
             
             if (processNames.Any())
             {
@@ -28,8 +27,6 @@ namespace AppKill.Workflow
             {
                 Console.WriteLine("\"" + heading + "\"" + ": null");
             }
-
-            
         }
     }
 }

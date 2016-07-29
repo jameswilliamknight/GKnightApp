@@ -50,6 +50,7 @@
     <Compile Include="AppArgs.cs" />
     <Compile Include="Extensions\AppArgsExtension.cs" />
     <Compile Include="Extensions\AppModeExtensions.cs" />
+    <Compile Include="Util\Log.cs" />
     <Compile Include="Windows\ProcessFilters.cs" />
     <Compile Include="Windows\ProcessRepository.cs" />
     <Compile Include="Program.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Workflow\Interactive.cs" />
     <Compile Include="Workflow\IWorkflowUnit.cs" />
     <Compile Include="Workflow\Lister.cs" />
-    <Compile Include="Workflow\Log.cs" />
     <Compile Include="Workflow\SilentKill.cs" />
     <Compile Include="Workflow\Types\AppMode.cs" />
     <Compile Include="Workflow\Types\ProcessAction.cs" />
