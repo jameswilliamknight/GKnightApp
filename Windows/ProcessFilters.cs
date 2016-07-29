@@ -5,7 +5,7 @@ namespace AppKiller.Windows
 {
     public static class ProcessFilters
     {
-        public static Process[] Filter(this IOrderedEnumerable<Process> currentProcesses, string[] killList)
+        public static Process[] Filter(this Process[] currentProcesses, string[] killList)
         {
             return currentProcesses
                 .Where(p => killList.Contains(p.ProcessName))

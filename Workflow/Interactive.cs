@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using AppKiller.Windows;
 using AppKiller.Workflow.Types;
@@ -7,6 +9,19 @@ namespace AppKiller.Workflow
 {
     internal class Interactive : IWorkflowUnit
     {
+        /// <summary>
+        ///     Displays all the available keys.
+        /// </summary>
+        private static void PrintMenuFooter()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Options:");
+            Console.WriteLine();
+            Console.WriteLine("Q - Quit");
+            Console.WriteLine("C - Close Main Window");
+            Console.WriteLine("K - Kill");
+        }
+
         public int Run(AppArgs appArgs)
         {
             var killList = appArgs.KillList.ToArray();
@@ -15,19 +30,27 @@ namespace AppKiller.Workflow
 
             do
             {
-                var currentProcesses = ProcessRepository.GetProcesses(true);
+                var json = new List<KeyValuePair<Process[], string>>();
 
-                var toEndProcess = currentProcesses.Filter(killList);
+                var currentProcesses = new KeyValuePair<Process[], string>(
+                    ProcessRepository.GetProcesses(true),
+                    "All Processes");
 
-                Console.WriteLine("Kill Processes:");
-                Console.WriteLine(String.Join(", ", toEndProcess.Select(p => p.ProcessName)));
+                json.Add(currentProcesses);
+                
+                var toEndProcess = new KeyValuePair<Process[], string>(
+                    currentProcesses.Key.Filter(killList), 
+                    "Kill Processes");
 
-                Console.WriteLine();
-                Console.WriteLine("Options:");
-                Console.WriteLine();
-                Console.WriteLine("Q - Quit");
-                Console.WriteLine("C - Close Main Window");
-                Console.WriteLine("K - Kill");
+                json.Add(toEndProcess);
+
+                // TODO: Seperate concerns - generating JSON and Displaying.
+                foreach (var jsonPair in json)
+                {
+                    LogProcesses(jsonPair);
+                }
+
+                PrintMenuFooter();
 
                 _keyPressed = Console.ReadKey().KeyChar;
 
@@ -35,11 +58,11 @@ namespace AppKiller.Workflow
                 {
                     case 'k':
                     case 'K':
-                        ProcessRepository.EndProcesses(toEndProcess, ProcessAction.Exit);
+                        ProcessRepository.EndProcesses(toEndProcess.Key, ProcessAction.Exit);
                         break;
                     case 'c':
                     case 'C':
-                        ProcessRepository.EndProcesses(toEndProcess, ProcessAction.Close);
+                        ProcessRepository.EndProcesses(toEndProcess.Key, ProcessAction.Close);
                         break;
                     case 'q':
                     case 'Q':
@@ -53,6 +76,31 @@ namespace AppKiller.Workflow
             } while (_keyPressed == '\0');
 
             return 0;
+        }
+
+        private static void LogProcesses(KeyValuePair<Process[], string> processCategory)
+        {
+            var currentProcesses = processCategory.Key;
+            var heading = processCategory.Value;
+
+            var processNames = currentProcesses
+                .Select(p => p.ProcessName)
+                .ToList();
+
+            
+            if (processNames.Any())
+            {
+                Console.Write("\"" + heading + "\"" + ": \n[");
+                Console.Write("\n    '");
+                Console.Write(string.Join("',\n    '", processNames.Distinct()));
+                Console.WriteLine("'\n]\n");
+            }
+            else
+            {
+                Console.WriteLine("\"" + heading + "\"" + ": null");
+            }
+
+            
         }
     }
 }

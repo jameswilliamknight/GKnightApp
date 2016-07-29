@@ -31,6 +31,7 @@ namespace AppKiller
                     workflowUnit = new Lister();
                     break;
 
+                case AppMode.Interactive | AppMode.SilentKill:
                 case AppMode.Interactive:
                     workflowUnit = new Interactive();
                     break;
