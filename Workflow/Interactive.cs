@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using AppKiller.Windows;
 using AppKiller.Workflow.Types;
 
@@ -37,9 +36,9 @@ namespace AppKiller.Workflow
                     "All Processes");
 
                 json.Add(currentProcesses);
-                
+
                 var toEndProcess = new KeyValuePair<Process[], string>(
-                    currentProcesses.Key.Filter(killList), 
+                    currentProcesses.Key.Filter(killList),
                     "Kill Processes");
 
                 json.Add(toEndProcess);
@@ -47,7 +46,7 @@ namespace AppKiller.Workflow
                 // TODO: Seperate concerns - generating JSON and Displaying.
                 foreach (var jsonPair in json)
                 {
-                    LogProcesses(jsonPair);
+                    Log.Processes(jsonPair);
                 }
 
                 PrintMenuFooter();
@@ -76,31 +75,6 @@ namespace AppKiller.Workflow
             } while (_keyPressed == '\0');
 
             return 0;
-        }
-
-        private static void LogProcesses(KeyValuePair<Process[], string> processCategory)
-        {
-            var currentProcesses = processCategory.Key;
-            var heading = processCategory.Value;
-
-            var processNames = currentProcesses
-                .Select(p => p.ProcessName)
-                .ToList();
-
-            
-            if (processNames.Any())
-            {
-                Console.Write("\"" + heading + "\"" + ": \n[");
-                Console.Write("\n    '");
-                Console.Write(string.Join("',\n    '", processNames.Distinct()));
-                Console.WriteLine("'\n]\n");
-            }
-            else
-            {
-                Console.WriteLine("\"" + heading + "\"" + ": null");
-            }
-
-            
         }
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using AppKiller.Windows;
 
 namespace AppKiller.Workflow
@@ -7,7 +9,11 @@ namespace AppKiller.Workflow
     {
         public int Run(AppArgs appArgs)
         {
-            ProcessRepository.GetProcesses(true);
+            var temp = new KeyValuePair<Process[], string>(
+                ProcessRepository.GetProcesses(true),
+                "All Processes");
+
+            Log.Processes(temp);
 
             if (appArgs.InteractiveMode)
             {

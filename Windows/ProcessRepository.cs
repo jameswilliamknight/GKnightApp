@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using AppKiller.Workflow;
 using AppKiller.Workflow.Types;
 
 namespace AppKiller.Windows

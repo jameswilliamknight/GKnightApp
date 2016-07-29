@@ -1,5 +1,4 @@
 using System.Linq;
-using AppKiller.Workflow;
 using AppKiller.Workflow.Types;
 
 namespace AppKiller.Extensions

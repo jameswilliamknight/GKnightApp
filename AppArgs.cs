@@ -55,7 +55,7 @@ namespace AppKiller
                 .As('v', "verbose")
                 .Callback(result => appArgs.Verbose = result)
                 .SetDefault(false);
-            
+
             fclp.Parse(args);
 
             if (appArgs.Verbose)
